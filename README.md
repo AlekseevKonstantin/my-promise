@@ -1,6 +1,29 @@
 ### My version of the promise implementation on javascript
 
-> input
+> input resolve promise
+
+    console.log('start');
+
+    const promise = new MyPromise((res, rej) => {
+        res('resolve');
+        console.log('in promise');
+    })
+    .then((value) => value + ' from then')
+    .then((value) => console.log(value + ' promise '))
+    .catch((error) => console.error(error))
+    .finally(() => console.log('finally'));
+
+    console.log('end');
+
+> output resolve promise
+
+    start
+    in promise
+    end
+    resolve from then  promise 
+    finally
+
+> input reject promise
 
     console.log('start');
 
@@ -11,16 +34,14 @@
     .then((value) => value + ' from then ')
     .then((value) => console.log(value + ' promise '))
     .catch((error) => console.error(error))
-    .finally(() => console.log('finally-1'))
-    .finally(() => console.log('finally-2'));
+    .finally(() => console.log('finally'));
 
     console.log('end');
 
-> output
+> output reject promise
 
     start
     in promise
     end
     error
-    finally-1
-    finally-2
+    finally

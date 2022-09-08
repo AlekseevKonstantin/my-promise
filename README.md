@@ -23,7 +23,7 @@
     resolve from then  promise 
     finally
 
-
+---
 
 > input reject promise
 

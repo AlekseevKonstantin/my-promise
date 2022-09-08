@@ -1,6 +1,6 @@
 ### My version of the promise implementation on javascript
 
-> input resolve promise
+# input resolve promise
 
     console.log('start');
 
@@ -15,7 +15,7 @@
 
     console.log('end');
 
-> output resolve promise
+# output resolve promise
 
     start
     in promise
@@ -25,7 +25,7 @@
 
 ***
 
-> input reject promise
+# input reject promise
 
     console.log('start');
 
@@ -40,7 +40,7 @@
 
     console.log('end');
 
-> output reject promise
+# output reject promise
 
     start
     in promise

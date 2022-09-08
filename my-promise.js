@@ -3,7 +3,7 @@ const REJECT = 'reject';
 const PENDING = 'pending';
 const FINALLY = 'finally';
 
-const ERROR_MSG = 'you have passed a function';
+const ERROR_MSG = 'you have to pass a function';
 
 const isFunction = (fn) => typeof fn === 'function';
 const checkCallback = (callback) => () => isFunction(callback); 

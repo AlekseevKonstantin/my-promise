@@ -29,14 +29,6 @@ class MyPromise {
         )(this.#resolve, this.#reject);
     }
 
-    #resolve = (value) => {
-        queueMicrotask(() => this.#setSubscriber(RESOLVE)(value));
-    }
-
-    #reject = (value) => {
-        queueMicrotask(() => this.#setSubscriber(REJECT)(value));
-    }
-
     #setSubscriber(state) {
         return (value) => {
             this.#state = state;
@@ -50,6 +42,14 @@ class MyPromise {
                 });
             });
         }
+    }
+    
+    #resolve = (value) => {
+        queueMicrotask(() => this.#setSubscriber(RESOLVE)(value));
+    }
+
+    #reject = (value) => {
+        queueMicrotask(() => this.#setSubscriber(REJECT)(value));
     }
 
     #pushCallback(type, callback) {

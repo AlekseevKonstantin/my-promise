@@ -2,18 +2,14 @@ const RESOLVE = 'resolve';
 const REJECT = 'reject';
 const PENDING = 'pending';
 const FINALLY = 'finally';
-
 const ERROR_MSG = 'you have to pass a function';
 
 const isFunction = (fn) => typeof fn === 'function';
-const checkCallback = (callback) => () => isFunction(callback); 
  
-function callWithCheck(check, errorMsg, callback) {
-
-    if (!check()) {
-        throw new Error(errorMsg);
+function callWithCheck(isFunction, callback) {
+    if (!isFunction) {
+        throw new Error(ERROR_MSG);
     }
-
     return (...args) => callback.apply(this, args);
 }
 
@@ -28,8 +24,7 @@ class MyPromise {
 
     constructor(callback) {
         callWithCheck(
-            checkCallback(callback), 
-            ERROR_MSG,
+            isFunction(callback), 
             callback
         )(this.#resolve, this.#reject);
     }
@@ -59,8 +54,7 @@ class MyPromise {
 
     #pushCallback(type, callback) {
         callWithCheck(
-            checkCallback(callback), 
-            ERROR_MSG,
+            isFunction(callback), 
             () => this.#callbacks[type].push(callback)
         )();
     }
